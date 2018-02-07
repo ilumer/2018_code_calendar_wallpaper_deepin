@@ -9,7 +9,7 @@ BACKGROUND_SOURCE = 'example.jpg'  # 壁纸路径
 
 
 PAGE_OFFSET = 6  # 周历从PDF文档的第7页开始
-MARGIN_LEFT = 100  # 周历的左边距
+MARGIN_LEFT = 60  # 周历的左边距
 MARGIN_TOP = 10  # 周历的上边距
 
 current_week = datetime.datetime.now().isocalendar()[1]  # 获取当前是第几周
@@ -20,7 +20,7 @@ if not os.path.exists('output'):
 
 OUTPUT = os.path.join('output', BACKGROUND_SOURCE)
 
-with Image(filename=PDF_SOURCE.format(page), resolution=200) as calendar:
+with Image(filename=PDF_SOURCE.format(page), resolution=150) as calendar:
     with Image(filename=BACKGROUND_SOURCE) as background:
         background.composite_channel('default_channels', calendar, 'blend', MARGIN_LEFT, MARGIN_TOP)
         background.save(filename=OUTPUT)
